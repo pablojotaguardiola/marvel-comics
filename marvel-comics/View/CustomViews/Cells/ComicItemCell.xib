@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ComicItemCell" customModule="marvel_comics" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="283" height="357"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="283" height="357"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlO-Ge-BlA">
+                        <rect key="frame" x="8" y="8" width="267" height="341"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comicPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-3M-Jmv">
+                                <rect key="frame" x="39" y="12" width="189" height="283"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Uo0-3M-Jmv" secondAttribute="height" multiplier="2:3" id="tOb-NX-85H"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kjdhfl wkjhfl wekjrhfl wekjrhfl wekjrhfl wkejrhfl wekjrfhlw ekjrh " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQJ-RK-anv">
+                                <rect key="frame" x="0.0" y="303" width="267" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="aRQ-i3-IB1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-Z5-DoM">
+                                <rect key="frame" x="115" y="129" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Uo0-3M-Jmv" firstAttribute="centerX" secondItem="wlO-Ge-BlA" secondAttribute="centerX" id="Cxa-KB-O0n"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uo0-3M-Jmv" secondAttribute="trailing" constant="8" id="H60-OI-9kc"/>
+                            <constraint firstItem="Uo0-3M-Jmv" firstAttribute="top" secondItem="wlO-Ge-BlA" secondAttribute="top" constant="12" id="HPg-IH-CJq"/>
+                            <constraint firstItem="mQJ-RK-anv" firstAttribute="leading" secondItem="wlO-Ge-BlA" secondAttribute="leading" id="MbW-G0-RUk"/>
+                            <constraint firstItem="mQJ-RK-anv" firstAttribute="top" secondItem="Uo0-3M-Jmv" secondAttribute="bottom" constant="8" id="WU9-b4-fJC"/>
+                            <constraint firstAttribute="bottom" secondItem="mQJ-RK-anv" secondAttribute="bottom" id="r17-U6-Gd3"/>
+                            <constraint firstItem="Uo0-3M-Jmv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wlO-Ge-BlA" secondAttribute="leading" constant="8" id="rzx-yX-Ue2"/>
+                            <constraint firstAttribute="trailing" secondItem="mQJ-RK-anv" secondAttribute="trailing" id="yNe-kP-ZDS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wlO-Ge-BlA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="DCK-Gb-Lwp"/>
+                <constraint firstAttribute="bottom" secondItem="wlO-Ge-BlA" secondAttribute="bottom" constant="8" id="V0z-Mj-FPB"/>
+                <constraint firstAttribute="trailing" secondItem="wlO-Ge-BlA" secondAttribute="trailing" constant="8" id="cbu-Ay-qWe"/>
+                <constraint firstItem="wlO-Ge-BlA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="xj9-lU-CVg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="283" height="357"/>
+            <connections>
+                <outlet property="activityIndicator" destination="tMS-Z5-DoM" id="TmU-4K-aZQ"/>
+                <outlet property="coverImageView" destination="Uo0-3M-Jmv" id="TOV-Sp-JSZ"/>
+                <outlet property="titleLabel" destination="mQJ-RK-anv" id="Tx1-8n-PnF"/>
+            </connections>
+            <point key="canvasLocation" x="156" y="152.47376311844079"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="comicPlaceholder" width="638" height="366"/>
+    </resources>
+</document>

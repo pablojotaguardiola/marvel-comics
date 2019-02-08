@@ -10,4 +10,11 @@ import Foundation
 
 class ComicDetailViewModel: NSObject {
     
+    let comic: Comic
+    
+    init(comic: Comic) {
+        self.comic = comic
+        
+        super.init()
+    }
 }

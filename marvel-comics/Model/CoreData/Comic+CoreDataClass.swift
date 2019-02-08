@@ -16,7 +16,12 @@ public class Comic: NSManagedObject, Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
         case title
+        case thumbnail
+        case images
     }
+    
+    public var thumbnail: ComicImage? = nil
+    public var images: [ComicImage] = []
     
     // MARK: - Decodable
     required convenience public init(from decoder: Decoder) throws {
@@ -26,5 +31,7 @@ public class Comic: NSManagedObject, Decodable {
         
         self.id = try container.decode(Int64.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
+        self.thumbnail = try container.decode(ComicImage.self, forKey: .thumbnail)
+        self.images = try container.decode([ComicImage].self, forKey: .images)
     }
 }

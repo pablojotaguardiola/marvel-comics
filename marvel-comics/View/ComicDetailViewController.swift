@@ -9,8 +9,12 @@
 import UIKit
 
 class ComicDetailViewController: UIViewController {
+    
+    let viewModel: ComicDetailViewModel
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(viewModel: ComicDetailViewModel) {
+        self.viewModel = viewModel
+        
         super.init(nibName: nil, bundle: nil)
     }
     

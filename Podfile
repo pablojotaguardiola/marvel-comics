@@ -10,6 +10,8 @@ target 'marvel-comics' do
     pod 'ReactiveCocoa', '~> 8.0'
     pod 'Alamofire', '~> 4.8.1'
     pod 'CryptoSwift'
+    pod 'SnapKit', '~> 4.0.0'
+    pod 'Kingfisher', '~> 5.0'
 
   target 'marvel-comicsTests' do
     inherit! :search_paths

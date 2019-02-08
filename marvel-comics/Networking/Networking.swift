@@ -19,7 +19,7 @@ public class Networking: NSObject {
         func url() -> String {
             let timestamp = Date().timeIntervalSince1970
             let hash = "\(timestamp)\(privateKey)\(apiKey)".md5()
-            return "\(baseUrl)\(self.rawValue)?ts=\(timestamp)&hash=\(hash)&apikey=\(apiKey)"
+            return "\(baseUrl)\(self.rawValue)?hasDigitalIssue=false&ts=\(timestamp)&hash=\(hash)&apikey=\(apiKey)"
         }
     }
     
