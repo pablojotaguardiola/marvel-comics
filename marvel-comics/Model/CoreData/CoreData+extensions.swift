@@ -9,10 +9,14 @@
 import Foundation
 import CoreData
 
-extension NSManagedObject {
+extension CoreDataObject where Self: NSManagedObject {
 
-    public func insert() {
+    fileprivate func insert() {
         CoreData.context.insert(self)
+    }
+    
+    public func delete() {
+        CoreData.context.delete(self)
     }
     
     public func getCount(predicate: NSPredicate? = nil) -> Int {
@@ -21,6 +25,31 @@ extension NSManagedObject {
         fetchRequest.predicate = predicate
         
         return (try? CoreData.context.count(for: fetchRequest)) ?? 0
+    }
+    
+    public static func get<T: CoreDataObject>(by id: Int64, context: NSManagedObjectContext? = nil) -> T? {
+        let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: self))
+        
+        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(id)")
+        
+        return (try? CoreData.context.fetch(fetchRequest))?.first
+    }
+    
+    public static func exists(id: Int64) -> Bool {
+        let fetchRequest = self.fetchRequest()
+        
+        fetchRequest.predicate = NSPredicate(format: "id = %@", "\(id)")
+        
+        return ((try? CoreData.context.count(for: fetchRequest)) ?? 0) > 0
+    }
+    
+    @discardableResult
+    public func insertIfNeeded() -> Bool {
+        if Self.exists(id: self.id) {
+            return false
+        }
+        self.insert()
+        return true
     }
     
     /*public static func getCountSync(context: NSManagedObjectContext? = nil) -> Int {

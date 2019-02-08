@@ -34,13 +34,15 @@ class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
+        self.view.backgroundColor = .darkGray
+        
         self.view.addSubview(self.collectionView)
         
         self.collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        self.collectionView.backgroundColor = .white
+        self.collectionView.backgroundColor = .clear
     }
 }
 

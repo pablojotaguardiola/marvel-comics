@@ -29,18 +29,17 @@
                                     <constraint firstAttribute="width" secondItem="Uo0-3M-Jmv" secondAttribute="height" multiplier="2:3" id="tOb-NX-85H"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kjdhfl wkjhfl wekjrhfl wekjrhfl wekjrhfl wkejrhfl wekjrfhlw ekjrh " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQJ-RK-anv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQJ-RK-anv">
                                 <rect key="frame" x="0.0" y="303" width="267" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="aRQ-i3-IB1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-Z5-DoM">
-                                <rect key="frame" x="115" y="129" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-Z5-DoM">
+                                <rect key="frame" x="115" y="152" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,8 +47,10 @@
                             <constraint firstItem="Uo0-3M-Jmv" firstAttribute="centerX" secondItem="wlO-Ge-BlA" secondAttribute="centerX" id="Cxa-KB-O0n"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uo0-3M-Jmv" secondAttribute="trailing" constant="8" id="H60-OI-9kc"/>
                             <constraint firstItem="Uo0-3M-Jmv" firstAttribute="top" secondItem="wlO-Ge-BlA" secondAttribute="top" constant="12" id="HPg-IH-CJq"/>
+                            <constraint firstItem="tMS-Z5-DoM" firstAttribute="centerY" secondItem="wlO-Ge-BlA" secondAttribute="centerY" id="MTg-vS-LEN"/>
                             <constraint firstItem="mQJ-RK-anv" firstAttribute="leading" secondItem="wlO-Ge-BlA" secondAttribute="leading" id="MbW-G0-RUk"/>
                             <constraint firstItem="mQJ-RK-anv" firstAttribute="top" secondItem="Uo0-3M-Jmv" secondAttribute="bottom" constant="8" id="WU9-b4-fJC"/>
+                            <constraint firstItem="tMS-Z5-DoM" firstAttribute="centerX" secondItem="wlO-Ge-BlA" secondAttribute="centerX" id="pNT-2o-rIJ"/>
                             <constraint firstAttribute="bottom" secondItem="mQJ-RK-anv" secondAttribute="bottom" id="r17-U6-Gd3"/>
                             <constraint firstItem="Uo0-3M-Jmv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wlO-Ge-BlA" secondAttribute="leading" constant="8" id="rzx-yX-Ue2"/>
                             <constraint firstAttribute="trailing" secondItem="mQJ-RK-anv" secondAttribute="trailing" id="yNe-kP-ZDS"/>

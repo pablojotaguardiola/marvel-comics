@@ -17,4 +17,21 @@ class ComicDetailViewModel: NSObject {
         
         super.init()
     }
+    
+    public func favButtonTitle() -> String {
+        return Comic.exists(id: self.comic.id)
+            ? "Remove from favorites"
+            : "Add to favorites"
+    }
+    
+    public func toggleFavorites() {
+        if let comic: Comic = Comic.get(by: self.comic.id) {
+            comic.delete()
+        }
+        else {
+            Comic(from: self.comic).insertIfNeeded()
+        }
+        
+        CoreData.save()
+    }
 }
