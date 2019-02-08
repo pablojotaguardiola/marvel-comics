@@ -8,6 +8,8 @@ target 'marvel-comics' do
   # Pods for marvel-comics
     pod 'ReactiveSwift', '~> 4.0'
     pod 'ReactiveCocoa', '~> 8.0'
+    pod 'Alamofire', '~> 4.8.1'
+    pod 'CryptoSwift'
 
   target 'marvel-comicsTests' do
     inherit! :search_paths

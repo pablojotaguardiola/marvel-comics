@@ -1,4 +1,6 @@
 PODS:
+  - Alamofire (4.8.1)
+  - CryptoSwift (0.14.0)
   - ReactiveCocoa (8.0.2):
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
@@ -6,20 +8,26 @@ PODS:
   - Result (4.1.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.8.1)
+  - CryptoSwift
   - ReactiveCocoa (~> 8.0)
   - ReactiveSwift (~> 4.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CryptoSwift
     - ReactiveCocoa
     - ReactiveSwift
     - Result
 
 SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: 8403349d128788e86d1d3cc9f9b91387e252461a
+PODFILE CHECKSUM: e200513c31e38d0ba78ae56a4469e2d4cbc1d281
 
 COCOAPODS: 1.5.0
