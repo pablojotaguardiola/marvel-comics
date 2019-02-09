@@ -18,10 +18,28 @@ class HomeViewModel: NSObject {
         return comics.count
     }
     
-    public func updateComics() -> SignalProducer<Void, NetworkingError> {
-        return Networking().get(type: RequestResponse<Comic>.self, operation: .getComicList).on { requestResponse in
-            self.comics = requestResponse.data?.results ?? []
-        }.map { _ in return () }
+    public private(set) var isDownloadingComics: Bool = false
+    
+    /**
+     Download comics and add them to the existing list
+     Parameters:
+     - reloadList: if this is true, existing comic list will be emptied
+     
+     Returns a SignalProducer with the new downloaded comics
+     */
+    public func downloadComics(reloadList: Bool) -> SignalProducer<[Comic], NetworkingError> {
+        self.isDownloadingComics = true
+        let offset = reloadList ? 0 : self.comics.count
+        if reloadList {
+            self.comics = []
+        }
+        
+        return Networking().get(type: RequestResponse<Comic>.self, operation: .getComicList(offset: offset)).on { requestResponse in
+            self.comics.append(contentsOf: requestResponse.data?.results ?? [])
+            self.isDownloadingComics = false
+        }.map { requestResponse in
+            return requestResponse.data?.results ?? []
+        }
     }
     
     public func getComic(for index: Int) -> Comic? {

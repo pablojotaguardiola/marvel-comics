@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.8.1)
   - CryptoSwift (0.14.0)
   - Kingfisher (5.1.0)
+  - KRPullLoader (1.2.0)
   - ReactiveCocoa (8.0.2):
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.8.1)
   - CryptoSwift
   - Kingfisher (~> 5.0)
+  - KRPullLoader
   - ReactiveCocoa (~> 8.0)
   - ReactiveSwift (~> 4.0)
   - SnapKit (~> 4.0.0)
@@ -22,6 +24,7 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - Kingfisher
+    - KRPullLoader
     - ReactiveCocoa
     - ReactiveSwift
     - Result
@@ -31,11 +34,12 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
+  KRPullLoader: 58617a4d2d6c08bec489c05691fcda328041416c
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 7cb67f416a548c55b368705a2ee889b8363d2045
+PODFILE CHECKSUM: 0920dfdf13716f387b5683d5dfedcec4c0d1fec7
 
 COCOAPODS: 1.5.0

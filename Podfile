@@ -12,6 +12,7 @@ target 'marvel-comics' do
     pod 'CryptoSwift'
     pod 'SnapKit', '~> 4.0.0'
     pod 'Kingfisher', '~> 5.0'
+    pod 'KRPullLoader'
 
   target 'marvel-comicsTests' do
     inherit! :search_paths

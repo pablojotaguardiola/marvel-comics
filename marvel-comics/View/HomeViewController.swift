@@ -16,24 +16,52 @@ class HomeViewController: UIViewController {
     // UI Elements
     let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: "backgroundHeroes"))
     let refreshControl: UIRefreshControl = UIRefreshControl(frame: .zero)
+    let bottomRefreshControl: UIRefreshControl = UIRefreshControl(frame: .zero)
     let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.refreshControl = self.refreshControl
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.register(UINib.init(nibName: ComicItemCell.identifier, bundle: nil), forCellWithReuseIdentifier: ComicItemCell.identifier)
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = self.viewModel.getItemSize(for: self.view.frame)
-        self.collectionView.collectionViewLayout = collectionViewLayout
+        self.setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        self.viewModel.updateComics().startWithResult { _ in
-            self.collectionView.reloadData()
+        self.refreshControl.beginRefreshing()
+        self.loadFirstComics()
+        
+        self.bottomRefreshControl.beginRefreshing()
+    }
+    
+    @objc private func loadFirstComics() {
+        if self.viewModel.isDownloadingComics {
+            return
         }
         
-        self.setupUI()
+        self.viewModel.downloadComics(reloadList: true).startWithResult { _ in
+            self.refreshControl.endRefreshing()
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func loadMoreComics() {
+        if self.viewModel.isDownloadingComics {
+            return
+        }
+        
+        self.viewModel.downloadComics(reloadList: false).startWithResult { result in
+            self.refreshControl.endRefreshing()
+            let newComics = result.value ?? []
+            let currentItemsCount = self.collectionView.numberOfItems(inSection: 0)
+            let indexPathArray = (currentItemsCount..<(currentItemsCount + newComics.count))
+                .map { IndexPath(row: $0, section: 0) }
+            self.collectionView.insertItems(at: indexPathArray)
+        }
     }
     
     private func setupUI() {
@@ -50,8 +78,22 @@ class HomeViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        self.backgroundImageView.contentMode = .scaleAspectFill
+        self.refreshControl.tintColor = .white
+        self.refreshControl.addTarget(self, action: #selector(loadFirstComics), for: .valueChanged)
+        
+        self.collectionView.refreshControl = self.refreshControl
+        self.collectionView.addSubview(self.bottomRefreshControl)
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.footerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 50.0)
+        collectionViewLayout.itemSize = self.viewModel.getItemSize(for: self.view.frame)
+        self.collectionView.collectionViewLayout = collectionViewLayout
         self.collectionView.backgroundColor = .clear
+        self.collectionView.register(UINib.init(nibName: ComicItemCell.identifier, bundle: nil), forCellWithReuseIdentifier: ComicItemCell.identifier)
+        self.collectionView.register(UINib.init(nibName: LoadMoreFooterReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "UICollectionElementKindSectionFooter", withReuseIdentifier: LoadMoreFooterReusableView.identifier)
+        
+        self.backgroundImageView.contentMode = .scaleAspectFill
     }
 }
 
@@ -77,5 +119,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let comicDetailViewController = ComicDetailViewController(viewModel: comicDetailViewModel)
         
         self.navigationController?.pushViewController(comicDetailViewController, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
+            self.loadMoreComics()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadMoreFooterReusableView.identifier, for: indexPath)
+        
+        return view
     }
 }

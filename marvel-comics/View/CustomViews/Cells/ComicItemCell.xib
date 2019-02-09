@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-Z5-DoM">
-                                <rect key="frame" x="115" y="152" width="37" height="37"/>
+                                <rect key="frame" x="115" y="127.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,12 +47,12 @@
                             <constraint firstItem="Uo0-3M-Jmv" firstAttribute="centerX" secondItem="wlO-Ge-BlA" secondAttribute="centerX" id="Cxa-KB-O0n"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uo0-3M-Jmv" secondAttribute="trailing" constant="8" id="H60-OI-9kc"/>
                             <constraint firstItem="Uo0-3M-Jmv" firstAttribute="top" secondItem="wlO-Ge-BlA" secondAttribute="top" constant="12" id="HPg-IH-CJq"/>
-                            <constraint firstItem="tMS-Z5-DoM" firstAttribute="centerY" secondItem="wlO-Ge-BlA" secondAttribute="centerY" id="MTg-vS-LEN"/>
+                            <constraint firstItem="tMS-Z5-DoM" firstAttribute="centerY" secondItem="Uo0-3M-Jmv" secondAttribute="centerY" id="MZ8-Yz-egb"/>
                             <constraint firstItem="mQJ-RK-anv" firstAttribute="leading" secondItem="wlO-Ge-BlA" secondAttribute="leading" id="MbW-G0-RUk"/>
                             <constraint firstItem="mQJ-RK-anv" firstAttribute="top" secondItem="Uo0-3M-Jmv" secondAttribute="bottom" constant="8" id="WU9-b4-fJC"/>
-                            <constraint firstItem="tMS-Z5-DoM" firstAttribute="centerX" secondItem="wlO-Ge-BlA" secondAttribute="centerX" id="pNT-2o-rIJ"/>
                             <constraint firstAttribute="bottom" secondItem="mQJ-RK-anv" secondAttribute="bottom" id="r17-U6-Gd3"/>
                             <constraint firstItem="Uo0-3M-Jmv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wlO-Ge-BlA" secondAttribute="leading" constant="8" id="rzx-yX-Ue2"/>
+                            <constraint firstItem="tMS-Z5-DoM" firstAttribute="centerX" secondItem="Uo0-3M-Jmv" secondAttribute="centerX" id="v6a-rz-vsy"/>
                             <constraint firstAttribute="trailing" secondItem="mQJ-RK-anv" secondAttribute="trailing" id="yNe-kP-ZDS"/>
                         </constraints>
                     </view>

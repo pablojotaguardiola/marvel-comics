@@ -13,13 +13,22 @@ import CryptoSwift
 
 public class Networking: NSObject {
     
-    public enum Operation: String {
-        case getComicList = "v1/public/comics"
+    public enum Operation {
+        case getComicList(offset: Int)
         
         func url() -> String {
             let timestamp = Date().timeIntervalSince1970
             let hash = "\(timestamp)\(privateKey)\(apiKey)".md5()
-            return "\(baseUrl)\(self.rawValue)?hasDigitalIssue=false&ts=\(timestamp)&hash=\(hash)&apikey=\(apiKey)"
+            let parameters = "hasDigitalIssue=false&ts=\(timestamp)&hash=\(hash)&apikey=\(apiKey)"
+            return self.path(parameters: parameters)
+        }
+        
+        private func path(parameters: String) -> String {
+            switch self {
+            case .getComicList(let offset):
+                let path = "v1/public/comics"
+                return "\(baseUrl)\(path)?\(parameters)" + (offset > 0 ? "&offset=\(offset)" : "")
+            }
         }
     }
     
@@ -35,21 +44,15 @@ public class Networking: NSObject {
             
             self.request = Alamofire.request(operation.url()).responseData { response in
                 guard
-                    let data = response.value
+                    let data = response.value,
+                    let resp = try? JSONDecoder().decode(T.self, from: data)
                 else {
                     observer.send(error: .parseError)
                     return
                 }
                 
-                do {
-                    let resp = try JSONDecoder().decode(T.self, from: data)
-                
-                    observer.send(value: resp)
-                    observer.sendCompleted()
-                }
-                catch let e {
-                    print(e)
-                }
+                observer.send(value: resp)
+                observer.sendCompleted()
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  UICollectionViewCell+identifier.swift
+//  UICollectionReusableView+identifier.swift
 //  marvel-comics
 //
 //  Created by Pablo Guardiola on 08/02/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UICollectionViewCell {
+extension UICollectionReusableView {
     static var identifier: String {
         get {
             return String(describing: self)
