@@ -14,11 +14,14 @@ class HomeViewController: UIViewController {
     let viewModel: HomeViewModel = HomeViewModel()
     
     // UI Elements
+    let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: "backgroundHeroes"))
+    let refreshControl: UIRefreshControl = UIRefreshControl(frame: .zero)
     let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.refreshControl = self.refreshControl
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(UINib.init(nibName: ComicItemCell.identifier, bundle: nil), forCellWithReuseIdentifier: ComicItemCell.identifier)
@@ -34,14 +37,20 @@ class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.view.backgroundColor = .darkGray
+        self.view.backgroundColor = .lightGray
         
+        self.view.addSubview(self.backgroundImageView)
         self.view.addSubview(self.collectionView)
+        
+        self.backgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         self.collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
+        self.backgroundImageView.contentMode = .scaleAspectFill
         self.collectionView.backgroundColor = .clear
     }
 }

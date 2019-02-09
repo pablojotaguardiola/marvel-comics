@@ -23,18 +23,18 @@
                         <rect key="frame" x="8" y="8" width="267" height="341"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comicPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-3M-Jmv">
-                                <rect key="frame" x="39" y="12" width="189" height="283"/>
+                                <rect key="frame" x="44" y="12" width="179" height="268"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Uo0-3M-Jmv" secondAttribute="height" multiplier="2:3" id="tOb-NX-85H"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQJ-RK-anv">
-                                <rect key="frame" x="0.0" y="303" width="267" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic title hjg khg khjg khjg kjhg kjhg " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQJ-RK-anv">
+                                <rect key="frame" x="0.0" y="288" width="267" height="53"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="aRQ-i3-IB1"/>
+                                    <constraint firstAttribute="height" constant="53" id="M3K-5c-sES"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

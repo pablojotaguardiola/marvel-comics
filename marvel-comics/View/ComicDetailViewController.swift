@@ -48,6 +48,7 @@ class ComicDetailViewController: UIViewController {
     }
     
     private func loadComicInfo() {
+        self.title = self.viewModel.comic.title
         self.titleLabel.text = self.viewModel.comic.title
         self.descriptionLabel.text = self.viewModel.comic.descriptionText
         
@@ -80,8 +81,8 @@ class ComicDetailViewController: UIViewController {
         }
         
         self.headerBackground.snp.makeConstraints { make in
-            make.top.equalTo(self.view.snp.topMargin).offset(32)
-            make.left.equalToSuperview().offset(32)
+            make.top.equalTo(self.view.snp.topMargin).offset(16)
+            make.left.equalToSuperview().offset(16)
             make.height.equalTo(250)
             make.width.equalTo(self.headerBackground.snp.height).multipliedBy(2.0 / 3.0)
         }
