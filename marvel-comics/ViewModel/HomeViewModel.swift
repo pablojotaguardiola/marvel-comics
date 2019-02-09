@@ -31,13 +31,10 @@ class HomeViewModel: NSObject {
     }
     
     public func getItemSize(for frame: CGRect) -> CGSize {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return CGSize(width: (frame.width / 2.0) - 10, height: 250)
-        case .pad:
+        if Device.isPad {
             return CGSize(width: (frame.width / 3.0) - 10, height: 300)
-        case .unspecified, .tv, .carPlay:
-            return CGSize(width: (frame.width / 2.0) - 10, height: 200)
         }
+        
+        return CGSize(width: (frame.width / 2.0) - 10, height: 250)
     }
 }

@@ -23,6 +23,7 @@
 		8149B0E3220E0CAA00C931DE /* UICollectionViewCell+identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E2220E0CAA00C931DE /* UICollectionViewCell+identifier.swift */; };
 		8149B0E5220E1BED00C931DE /* ComicImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E4220E1BED00C931DE /* ComicImage.swift */; };
 		8149B0E7220E3E9F00C931DE /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E6220E3E9F00C931DE /* CoreDataObject.swift */; };
+		8149B0E9220F385800C931DE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E8220F385800C931DE /* Device.swift */; };
 		817A8038220DEFDE009E69D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A8037220DEFDE009E69D3 /* AppDelegate.swift */; };
 		817A803A220DEFDE009E69D3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A8039220DEFDE009E69D3 /* HomeViewController.swift */; };
 		817A803D220DEFDE009E69D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 817A803B220DEFDE009E69D3 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		8149B0E2220E0CAA00C931DE /* UICollectionViewCell+identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+identifier.swift"; sourceTree = "<group>"; };
 		8149B0E4220E1BED00C931DE /* ComicImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicImage.swift; sourceTree = "<group>"; };
 		8149B0E6220E3E9F00C931DE /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
+		8149B0E8220F385800C931DE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		817A8034220DEFDE009E69D3 /* marvel-comics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-comics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		817A8037220DEFDE009E69D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		817A8039220DEFDE009E69D3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8149B0EA220F386300C931DE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8149B0E8220F385800C931DE /* Device.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		817A802B220DEFDE009E69D3 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +249,7 @@
 				8149B0CA220DF50D00C931DE /* Networking */,
 				8149B0E1220E0C4300C931DE /* Extensions */,
 				8149B0BF220DF22C00C931DE /* SupportingFiles */,
+				8149B0EA220F386300C931DE /* Utils */,
 				817A8046220DEFDF009E69D3 /* Info.plist */,
 			);
 			path = "marvel-comics";
@@ -511,6 +522,7 @@
 				8149B0D2220DFC8F00C931DE /* RequestResponse.swift in Sources */,
 				817A8040220DEFDE009E69D3 /* marvel_comics.xcdatamodeld in Sources */,
 				8149B0DF220E0C3100C931DE /* ComicItemCell.swift in Sources */,
+				8149B0E9220F385800C931DE /* Device.swift in Sources */,
 				817A803A220DEFDE009E69D3 /* HomeViewController.swift in Sources */,
 				8149B0D5220DFD8100C931DE /* Comic+CoreDataClass.swift in Sources */,
 				8149B0E3220E0CAA00C931DE /* UICollectionViewCell+identifier.swift in Sources */,
