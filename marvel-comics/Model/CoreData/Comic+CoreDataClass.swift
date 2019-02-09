@@ -17,27 +17,29 @@ public class Comic: NSManagedObject, Decodable, CoreDataObject {
         case id
         case title
         case thumbnail
-        case images
         case descriptionText = "description"
+        case pageCount
     }
     
-    public var thumbnail: ComicImage? = nil
-    public var images: [ComicImage] = []
-    
     public var thumbnailUrl: URL? {
-        guard let thumbnail = self.thumbnail else { return nil }
+        guard
+            let thumbnailPath = thumbnail?.path,
+            let thumbnailExtension = thumbnail?.extensionString
+        else { return nil }
         
-        return URL(string: "\(thumbnail.path).\(thumbnail.extension)")
+        return URL(string: "\(thumbnailPath).\(thumbnailExtension)")
     }
     
     convenience init(from other: Comic) {
         self.init(entity: NSEntityDescription.entity(forEntityName: "Comic", in: CoreData.context)!, insertInto: nil)
         
         self.id = other.id
-        self.thumbnail = other.thumbnail
-        self.images = other.images
+        if let otherThumbnail = other.thumbnail {
+            self.thumbnail = ComicImage(from: otherThumbnail)
+        }
         self.title = other.title
         self.descriptionText = other.descriptionText
+        self.pageCount = other.pageCount
     }
     
     // MARK: - Decodable
@@ -48,8 +50,20 @@ public class Comic: NSManagedObject, Decodable, CoreDataObject {
         
         self.id = try container.decode(Int64.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
-        self.thumbnail = try container.decode(ComicImage.self, forKey: .thumbnail)
-        self.images = try container.decode([ComicImage].self, forKey: .images)
+        self.thumbnail = try container.decodeIfPresent(ComicImage.self, forKey: .thumbnail)
         self.descriptionText = try container.decodeIfPresent(String.self, forKey: .descriptionText)
+        self.pageCount = try container.decode(Int16.self, forKey: .pageCount)
+    }
+    
+    @discardableResult
+    public func insertIfNeeded() -> Bool {
+        if Comic.exists(id: self.id) {
+            return false
+        }
+        
+        self.thumbnail?.insert()
+        
+        self.insert()
+        return true
     }
 }

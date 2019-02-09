@@ -29,7 +29,7 @@ class ComicDetailViewModel: NSObject {
             comic.delete()
         }
         else {
-            Comic(from: self.comic).insertIfNeeded()
+            self.comic.insertIfNeeded()
         }
         
         CoreData.save()

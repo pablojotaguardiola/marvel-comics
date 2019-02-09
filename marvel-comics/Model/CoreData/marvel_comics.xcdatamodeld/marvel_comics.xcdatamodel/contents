@@ -3,9 +3,17 @@
     <entity name="Comic" representedClassName=".Comic" syncable="YES">
         <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComicImage" inverseName="comic" inverseEntity="ComicImage" syncable="YES"/>
+    </entity>
+    <entity name="ComicImage" representedClassName=".ComicImage" syncable="YES">
+        <attribute name="extensionString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comic" inverseName="thumbnail" inverseEntity="Comic" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Comic" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Comic" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="ComicImage" positionX="-45" positionY="27" width="128" height="90"/>
     </elements>
 </model>

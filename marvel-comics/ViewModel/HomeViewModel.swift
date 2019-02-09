@@ -10,15 +10,11 @@ import Foundation
 import ReactiveSwift
 import Result
 
-class HomeViewModel: NSObject {
+class HomeViewModel: NSObject, ComicListViewModelProtocol {
     
-    private var comics: [Comic] = []
+    internal var comics: [Comic] = []
     
-    public var comicsCount: Int {
-        return comics.count
-    }
-    
-    public private(set) var isDownloadingComics: Bool = false
+    internal var isGettingComics: Bool = false
     
     /**
      Download comics and add them to the existing list
@@ -27,8 +23,8 @@ class HomeViewModel: NSObject {
      
      Returns a SignalProducer with the new downloaded comics
      */
-    public func downloadComics(reloadList: Bool) -> SignalProducer<[Comic], NetworkingError> {
-        self.isDownloadingComics = true
+    public func loadComics(reloadList: Bool) -> SignalProducer<[Comic], NetworkingError> {
+        self.isGettingComics = true
         let offset = reloadList ? 0 : self.comics.count
         if reloadList {
             self.comics = []
@@ -36,23 +32,9 @@ class HomeViewModel: NSObject {
         
         return Networking().get(type: RequestResponse<Comic>.self, operation: .getComicList(offset: offset)).on { requestResponse in
             self.comics.append(contentsOf: requestResponse.data?.results ?? [])
-            self.isDownloadingComics = false
+            self.isGettingComics = false
         }.map { requestResponse in
             return requestResponse.data?.results ?? []
         }
-    }
-    
-    public func getComic(for index: Int) -> Comic? {
-        guard index < self.comics.count else { return nil }
-        
-        return self.comics[index]
-    }
-    
-    public func getItemSize(for frame: CGRect) -> CGSize {
-        if Device.isPad {
-            return CGSize(width: (frame.width / 3.0) - 10, height: 300)
-        }
-        
-        return CGSize(width: (frame.width / 2.0) - 10, height: 250)
     }
 }

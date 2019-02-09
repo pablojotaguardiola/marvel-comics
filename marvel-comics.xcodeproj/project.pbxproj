@@ -21,11 +21,16 @@
 		8149B0DF220E0C3100C931DE /* ComicItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0DD220E0C3100C931DE /* ComicItemCell.swift */; };
 		8149B0E0220E0C3100C931DE /* ComicItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8149B0DE220E0C3100C931DE /* ComicItemCell.xib */; };
 		8149B0E3220E0CAA00C931DE /* UICollectionReusableView+identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E2220E0CAA00C931DE /* UICollectionReusableView+identifier.swift */; };
-		8149B0E5220E1BED00C931DE /* ComicImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E4220E1BED00C931DE /* ComicImage.swift */; };
 		8149B0E7220E3E9F00C931DE /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E6220E3E9F00C931DE /* CoreDataObject.swift */; };
 		8149B0E9220F385800C931DE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0E8220F385800C931DE /* Device.swift */; };
 		8149B0F3220F613700C931DE /* LoadMoreFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0F1220F613700C931DE /* LoadMoreFooterReusableView.swift */; };
 		8149B0F4220F613700C931DE /* LoadMoreFooterReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8149B0F2220F613700C931DE /* LoadMoreFooterReusableView.xib */; };
+		8149B0F6220F6BD800C931DE /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0F5220F6BD800C931DE /* FavoritesViewModel.swift */; };
+		8149B0F9220F6D8900C931DE /* ComicListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0F8220F6D8900C931DE /* ComicListViewModelProtocol.swift */; };
+		8149B0FB220F713900C931DE /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0FA220F713800C931DE /* FavoritesViewController.swift */; };
+		8149B0FD220F7E8800C931DE /* ComicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0FC220F7E8800C931DE /* ComicListViewController.swift */; };
+		8149B100220F8CB900C931DE /* ComicImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0FE220F8CB900C931DE /* ComicImage+CoreDataClass.swift */; };
+		8149B101220F8CB900C931DE /* ComicImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0FF220F8CB900C931DE /* ComicImage+CoreDataProperties.swift */; };
 		817A8038220DEFDE009E69D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A8037220DEFDE009E69D3 /* AppDelegate.swift */; };
 		817A803A220DEFDE009E69D3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A8039220DEFDE009E69D3 /* HomeViewController.swift */; };
 		817A803D220DEFDE009E69D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 817A803B220DEFDE009E69D3 /* Main.storyboard */; };
@@ -75,11 +80,16 @@
 		8149B0DD220E0C3100C931DE /* ComicItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicItemCell.swift; sourceTree = "<group>"; };
 		8149B0DE220E0C3100C931DE /* ComicItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicItemCell.xib; sourceTree = "<group>"; };
 		8149B0E2220E0CAA00C931DE /* UICollectionReusableView+identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+identifier.swift"; sourceTree = "<group>"; };
-		8149B0E4220E1BED00C931DE /* ComicImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicImage.swift; sourceTree = "<group>"; };
 		8149B0E6220E3E9F00C931DE /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		8149B0E8220F385800C931DE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		8149B0F1220F613700C931DE /* LoadMoreFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreFooterReusableView.swift; sourceTree = "<group>"; };
 		8149B0F2220F613700C931DE /* LoadMoreFooterReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreFooterReusableView.xib; sourceTree = "<group>"; };
+		8149B0F5220F6BD800C931DE /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		8149B0F8220F6D8900C931DE /* ComicListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModelProtocol.swift; sourceTree = "<group>"; };
+		8149B0FA220F713800C931DE /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		8149B0FC220F7E8800C931DE /* ComicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewController.swift; sourceTree = "<group>"; };
+		8149B0FE220F8CB900C931DE /* ComicImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComicImage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8149B0FF220F8CB900C931DE /* ComicImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComicImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		817A8034220DEFDE009E69D3 /* marvel-comics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-comics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		817A8037220DEFDE009E69D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		817A8039220DEFDE009E69D3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +153,6 @@
 			children = (
 				8149B0C9220DF46400C931DE /* CoreData */,
 				8149B0D1220DFC8F00C931DE /* RequestResponse.swift */,
-				8149B0E4220E1BED00C931DE /* ComicImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,7 +160,9 @@
 		8149B0C1220DF24800C931DE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8149B0F7220F6D7A00C931DE /* Protocols */,
 				8149B0C5220DF2D000C931DE /* HomeViewModel.swift */,
+				8149B0F5220F6BD800C931DE /* FavoritesViewModel.swift */,
 				8149B0C7220DF2EF00C931DE /* ComicDetailViewModel.swift */,
 			);
 			path = ViewModel;
@@ -161,7 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				8149B0DB220E0BFD00C931DE /* CustomViews */,
+				8149B0FC220F7E8800C931DE /* ComicListViewController.swift */,
 				817A8039220DEFDE009E69D3 /* HomeViewController.swift */,
+				8149B0FA220F713800C931DE /* FavoritesViewController.swift */,
 				8149B0C3220DF2AF00C931DE /* ComicDetailViewController.swift */,
 			);
 			path = View;
@@ -170,6 +183,8 @@
 		8149B0C9220DF46400C931DE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8149B0FE220F8CB900C931DE /* ComicImage+CoreDataClass.swift */,
+				8149B0FF220F8CB900C931DE /* ComicImage+CoreDataProperties.swift */,
 				8149B0D3220DFD8100C931DE /* Comic+CoreDataClass.swift */,
 				8149B0D4220DFD8100C931DE /* Comic+CoreDataProperties.swift */,
 				817A803E220DEFDE009E69D3 /* marvel_comics.xcdatamodeld */,
@@ -230,6 +245,14 @@
 				8149B0F2220F613700C931DE /* LoadMoreFooterReusableView.xib */,
 			);
 			path = Footers;
+			sourceTree = "<group>";
+		};
+		8149B0F7220F6D7A00C931DE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8149B0F8220F6D8900C931DE /* ComicListViewModelProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		817A802B220DEFDE009E69D3 = {
@@ -536,19 +559,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8149B101220F8CB900C931DE /* ComicImage+CoreDataProperties.swift in Sources */,
 				8149B0D2220DFC8F00C931DE /* RequestResponse.swift in Sources */,
 				817A8040220DEFDE009E69D3 /* marvel_comics.xcdatamodeld in Sources */,
 				8149B0DF220E0C3100C931DE /* ComicItemCell.swift in Sources */,
 				8149B0E9220F385800C931DE /* Device.swift in Sources */,
+				8149B0F9220F6D8900C931DE /* ComicListViewModelProtocol.swift in Sources */,
 				817A803A220DEFDE009E69D3 /* HomeViewController.swift in Sources */,
+				8149B0FB220F713900C931DE /* FavoritesViewController.swift in Sources */,
 				8149B0D5220DFD8100C931DE /* Comic+CoreDataClass.swift in Sources */,
 				8149B0E3220E0CAA00C931DE /* UICollectionReusableView+identifier.swift in Sources */,
 				8149B0D9220DFDE100C931DE /* CoreData.swift in Sources */,
 				8149B0D6220DFD8100C931DE /* Comic+CoreDataProperties.swift in Sources */,
+				8149B100220F8CB900C931DE /* ComicImage+CoreDataClass.swift in Sources */,
 				8149B0CE220DF7DC00C931DE /* NetworkingError.swift in Sources */,
-				8149B0E5220E1BED00C931DE /* ComicImage.swift in Sources */,
+				8149B0F6220F6BD800C931DE /* FavoritesViewModel.swift in Sources */,
 				817A8038220DEFDE009E69D3 /* AppDelegate.swift in Sources */,
 				8149B0C8220DF2EF00C931DE /* ComicDetailViewModel.swift in Sources */,
+				8149B0FD220F7E8800C931DE /* ComicListViewController.swift in Sources */,
 				8149B0C6220DF2D000C931DE /* HomeViewModel.swift in Sources */,
 				8149B0E7220E3E9F00C931DE /* CoreDataObject.swift in Sources */,
 				8149B0DA220DFDE100C931DE /* CoreData+extensions.swift in Sources */,
