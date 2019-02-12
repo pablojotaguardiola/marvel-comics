@@ -19,13 +19,21 @@ class FavoritesViewModel: NSObject, ComicListViewModelProtocol {
     /**
      Load comics from CoreData and update the list
      */
-    public func loadComics(reloadList: Bool = false) -> SignalProducer<[Comic], NetworkingError> {
+    public func loadComics(reloadList: Bool = false, searchText: String?) -> SignalProducer<[Comic], NetworkingError> {
         self.isGettingComics = true
         
         return SignalProducer { observer, _ in
             DispatchQueue.global(qos: .background).async {
                 
-                self.comics = Comic.getAll()
+                if
+                    let searchText = searchText,
+                    !searchText.isEmpty
+                {
+                    self.comics = Comic.getAll(withTitleLike: searchText)
+                }
+                else {
+                    self.comics = Comic.getAll()
+                }
                 
                 DispatchQueue.main.async {
                     observer.send(value: self.comics)

@@ -25,6 +25,9 @@
                 <constraint firstItem="W5a-Xb-Mmc" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="IFM-aw-u70"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="activityIndicator" destination="W5a-Xb-Mmc" id="oZs-Ml-a2X"/>
+            </connections>
         </collectionReusableView>
     </objects>
 </document>

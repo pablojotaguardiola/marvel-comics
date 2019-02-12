@@ -17,6 +17,7 @@ class ComicListViewController: UIViewController {
     let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: "backgroundHeroes"))
     let refreshControl: UIRefreshControl = UIRefreshControl(frame: .zero)
     let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    let searchBar = UISearchBar(frame: .zero)
     
     init(viewModel: ComicListViewModelProtocol) {
         self.viewModel = viewModel
@@ -31,23 +32,36 @@ class ComicListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupUI()   
+        self.setupUI()
     }
     
     open func setupUI() {
+        self.searchBar.delegate = self
+        
         self.view.backgroundColor = .lightGray
         
+        self.view.addSubview(self.searchBar)
         self.view.addSubview(self.backgroundImageView)
         self.view.addSubview(self.collectionView)
         
+        self.searchBar.snp.makeConstraints { make in
+            make.top.equalTo(self.view.snp.topMargin)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
         self.backgroundImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(self.searchBar.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
         }
         
         self.collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(self.searchBar.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
         }
         
+        self.searchBar.placeholder = "Start with title..."
+        self.searchBar.barTintColor = UIColor(red: 237.0/255.0, green: 29.0/255.0, blue: 36.0/255.0, alpha: 1.0)
         self.refreshControl.tintColor = .white
         
         self.collectionView.refreshControl = self.refreshControl
@@ -71,14 +85,14 @@ extension ComicListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComicItemCell.identifier, for: indexPath) as? ComicItemCell,
-            let comic = self.viewModel?.getComic(for: indexPath.row)
-        else {
-            return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComicItemCell.identifier, for: indexPath)
         
-        cell.comic = comic
+        if
+            let comicCell = cell as? ComicItemCell,
+            let comic = self.viewModel?.getComic(for: indexPath.row)
+        {
+            comicCell.comic = comic
+        }
         
         return cell
     }
@@ -90,5 +104,19 @@ extension ComicListViewController: UICollectionViewDelegate, UICollectionViewDat
         let comicDetailViewController = ComicDetailViewController(viewModel: comicDetailViewModel)
         
         self.navigationController?.pushViewController(comicDetailViewController, animated: true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.searchBar.resignFirstResponder()
+    }
+}
+
+extension ComicListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchBar.resignFirstResponder()
     }
 }

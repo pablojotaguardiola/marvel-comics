@@ -171,11 +171,11 @@
 		8149B0C2220DF25600C931DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8169A01E2213131600510C32 /* BaseViewControllers */,
+				8169A01C221312FA00510C32 /* Home */,
+				8169A01B221312EE00510C32 /* Favorites */,
+				8169A01D2213130900510C32 /* ComicDetail */,
 				8149B0DB220E0BFD00C931DE /* CustomViews */,
-				8149B0FC220F7E8800C931DE /* ComicListViewController.swift */,
-				817A8039220DEFDE009E69D3 /* HomeViewController.swift */,
-				8149B0FA220F713800C931DE /* FavoritesViewController.swift */,
-				8149B0C3220DF2AF00C931DE /* ComicDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +253,38 @@
 				8149B0F8220F6D8900C931DE /* ComicListViewModelProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8169A01B221312EE00510C32 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				8149B0FA220F713800C931DE /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		8169A01C221312FA00510C32 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				817A8039220DEFDE009E69D3 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8169A01D2213130900510C32 /* ComicDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8149B0C3220DF2AF00C931DE /* ComicDetailViewController.swift */,
+			);
+			path = ComicDetail;
+			sourceTree = "<group>";
+		};
+		8169A01E2213131600510C32 /* BaseViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8149B0FC220F7E8800C931DE /* ComicListViewController.swift */,
+			);
+			path = BaseViewControllers;
 			sourceTree = "<group>";
 		};
 		817A802B220DEFDE009E69D3 = {

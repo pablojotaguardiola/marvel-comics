@@ -14,7 +14,8 @@ protocol ComicListViewModelProtocol {
     var comics: [Comic] { get set }
     var isGettingComics: Bool { get set }
     
-    func loadComics(reloadList: Bool) -> SignalProducer<[Comic], NetworkingError>
+    func loadComics(reloadList: Bool, searchText: String?) -> SignalProducer<[Comic], NetworkingError>
+    mutating func emptyComicList()
 }
 
 extension ComicListViewModelProtocol {
@@ -35,5 +36,9 @@ extension ComicListViewModelProtocol {
         }
         
         return CGSize(width: (frame.width / 2.0) - 10, height: 250)
+    }
+    
+    public mutating func emptyComicList() {
+        self.comics = []
     }
 }

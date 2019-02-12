@@ -66,4 +66,11 @@ public class Comic: NSManagedObject, Decodable, CoreDataObject {
         self.insert()
         return true
     }
+    
+    public static func getAll(withTitleLike searchText: String) -> [Comic] {
+        let fetchRequest: NSFetchRequest<Comic> = NSFetchRequest<Comic>(entityName: String(describing: self))
+        fetchRequest.predicate = NSPredicate(format: "title contains[c] %@", searchText)
+    
+        return (try? CoreData.context.fetch(fetchRequest)) ?? []
+    }
 }

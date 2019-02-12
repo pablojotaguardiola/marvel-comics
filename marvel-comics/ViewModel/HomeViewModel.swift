@@ -23,14 +23,14 @@ class HomeViewModel: NSObject, ComicListViewModelProtocol {
      
      Returns a SignalProducer with the new downloaded comics
      */
-    public func loadComics(reloadList: Bool) -> SignalProducer<[Comic], NetworkingError> {
+    public func loadComics(reloadList: Bool, searchText: String?) -> SignalProducer<[Comic], NetworkingError> {
         self.isGettingComics = true
         let offset = reloadList ? 0 : self.comics.count
         if reloadList {
             self.comics = []
         }
         
-        return Networking().get(type: RequestResponse<Comic>.self, operation: .getComicList(offset: offset)).on { requestResponse in
+        return Networking().get(type: RequestResponse<Comic>.self, operation: .getComicList(offset: offset, searchText: searchText)).on { requestResponse in
             self.comics.append(contentsOf: requestResponse.data?.results ?? [])
             self.isGettingComics = false
         }.map { requestResponse in

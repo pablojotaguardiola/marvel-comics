@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
 
 class HomeViewController: ComicListViewController {
+    
+    public let (setFooterActivityIndicatorStatusSignal, setFooterActivityIndicatorStatusSink) = Signal<Bool, NoError>.pipe()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,9 +31,14 @@ class HomeViewController: ComicListViewController {
             return
         }
         
-        self.viewModel?.loadComics(reloadList: true).startWithResult { _ in
+        self.viewModel?.emptyComicList()
+        self.collectionView.reloadData()
+        self.setFooterActivityIndicatorStatusSink.send(value: true)
+        
+        self.viewModel?.loadComics(reloadList: true, searchText: self.searchBar.text).startWithResult { _ in
             self.refreshControl.endRefreshing()
             self.collectionView.reloadData()
+            self.setFooterActivityIndicatorStatusSink.send(value: false)
         }
     }
     
@@ -38,13 +47,16 @@ class HomeViewController: ComicListViewController {
             return
         }
         
-        self.viewModel?.loadComics(reloadList: false).startWithResult { result in
+        self.setFooterActivityIndicatorStatusSink.send(value: true)
+        
+        self.viewModel?.loadComics(reloadList: false, searchText: self.searchBar.text).startWithResult { result in
             self.refreshControl.endRefreshing()
             let newComics = result.value ?? []
             let currentItemsCount = self.collectionView.numberOfItems(inSection: 0)
             let indexPathArray = (currentItemsCount..<(currentItemsCount + newComics.count))
                 .map { IndexPath(row: $0, section: 0) }
             self.collectionView.insertItems(at: indexPathArray)
+            self.setFooterActivityIndicatorStatusSink.send(value: false)
         }
     }
     
@@ -75,8 +87,36 @@ class HomeViewController: ComicListViewController {
 extension HomeViewController {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadMoreFooterReusableView.identifier, for: indexPath)
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadMoreFooterReusableView.identifier, for: indexPath)
         
-        return view
+        if let loadMoreFooterReusableView = footerView as? LoadMoreFooterReusableView {
+            self.setFooterActivityIndicatorStatusSignal.take(until: loadMoreFooterReusableView.reactive.prepareForReuse).observeValues { [weak self] active in
+                
+                active && !(self?.refreshControl.isRefreshing ?? false)
+                    ? loadMoreFooterReusableView.activityIndicator.startAnimating()
+                    : loadMoreFooterReusableView.activityIndicator.stopAnimating()
+            }
+        }
+        
+        return footerView
+    }
+}
+
+extension HomeViewController {
+    override func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        super.searchBarSearchButtonClicked(searchBar)
+        
+        self.viewModel?.emptyComicList()
+        self.collectionView.reloadData()
+        self.loadFirstComics()
+    }
+    
+    override func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            super.searchBar(searchBar, textDidChange: searchText)
+            self.viewModel?.emptyComicList()
+            self.collectionView.reloadData()
+            self.loadFirstComics()
+        }
     }
 }

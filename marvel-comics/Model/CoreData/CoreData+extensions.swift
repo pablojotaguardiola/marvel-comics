@@ -21,7 +21,7 @@ extension NSManagedObject {
 
 extension CoreDataObject where Self: NSManagedObject {
     
-    public static func get<T: CoreDataObject>(by id: Int64, context: NSManagedObjectContext? = nil) -> T? {
+    public static func get<T: CoreDataObject>(by id: Int64) -> T? {
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: self))
         
         fetchRequest.predicate = NSPredicate(format: "id = %@", "\(id)")
@@ -37,9 +37,9 @@ extension CoreDataObject where Self: NSManagedObject {
         return ((try? CoreData.context.count(for: fetchRequest)) ?? 0) > 0
     }
     
-    public static func getAll<T: CoreDataObject>(context: NSManagedObjectContext? = nil) -> [T] {
+    public static func getAll<T: CoreDataObject>() -> [T] {
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: self))
         
-        return (try? (context ?? CoreData.context).fetch(fetchRequest)) ?? []
+        return (try? CoreData.context.fetch(fetchRequest)) ?? []
     }
 }

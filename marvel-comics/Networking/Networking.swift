@@ -14,7 +14,7 @@ import CryptoSwift
 public class Networking: NSObject {
     
     public enum Operation {
-        case getComicList(offset: Int)
+        case getComicList(offset: Int, searchText: String?)
         
         func url() -> String {
             let timestamp = Date().timeIntervalSince1970
@@ -25,9 +25,18 @@ public class Networking: NSObject {
         
         private func path(parameters: String) -> String {
             switch self {
-            case .getComicList(let offset):
+            case .getComicList(let offset, let searchText):
                 let path = "v1/public/comics"
-                return "\(baseUrl)\(path)?\(parameters)" + (offset > 0 ? "&offset=\(offset)" : "")
+                var url = "\(baseUrl)\(path)?\(parameters)"
+                    + (offset > 0 ? "&offset=\(offset)" : "")
+                if
+                    let searchText = searchText,
+                    !searchText.isEmpty
+                {
+                    url += "&titleStartsWith=\(searchText)"
+                }
+                
+                return url
             }
         }
     }
