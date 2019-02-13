@@ -12,7 +12,7 @@ import Result
 
 class FavoritesViewModel: NSObject, ComicListViewModelProtocol {
     
-    internal var comics: [Comic] = []
+    internal var comics: MutableProperty<[Comic]> = MutableProperty([])
     
     var isGettingComics: Bool = false
     
@@ -29,14 +29,14 @@ class FavoritesViewModel: NSObject, ComicListViewModelProtocol {
                     let searchText = searchText,
                     !searchText.isEmpty
                 {
-                    self.comics = Comic.getAll(withTitleLike: searchText)
+                    self.comics.value = Comic.getAll(withTitleLike: searchText)
                 }
                 else {
-                    self.comics = Comic.getAll()
+                    self.comics.value = Comic.getAll()
                 }
                 
                 DispatchQueue.main.async {
-                    observer.send(value: self.comics)
+                    observer.send(value: self.comics.value)
                 }
                 
                 self.isGettingComics = false

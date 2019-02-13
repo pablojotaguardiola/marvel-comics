@@ -18,6 +18,10 @@ class FavoritesViewController: ComicListViewController {
         // Setup UI
         self.title = "Favorites"
         self.refreshControl.addTarget(self, action: #selector(loadComics), for: .valueChanged)
+        
+        // Customize empty placeholder
+        self.emptyCollectionViewPlaceHolder.setTitle(title: "No comics yet")
+        self.emptyCollectionViewPlaceHolder.setSubtitle(subtitle: "Add some comics to this list to check them later")
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -11,7 +11,7 @@ import ReactiveSwift
 import Result
 
 protocol ComicListViewModelProtocol {
-    var comics: [Comic] { get set }
+    var comics: MutableProperty<[Comic]> { get set }
     var isGettingComics: Bool { get set }
     
     func loadComics(reloadList: Bool, searchText: String?) -> SignalProducer<[Comic], NetworkingError>
@@ -21,13 +21,13 @@ protocol ComicListViewModelProtocol {
 extension ComicListViewModelProtocol {
     
     var comicsCount: Int {
-        return comics.count
+        return comics.value.count
     }
     
     public func getComic(for index: Int) -> Comic? {
-        guard index < self.comics.count else { return nil }
+        guard index < self.comics.value.count else { return nil }
         
-        return self.comics[index]
+        return self.comics.value[index]
     }
     
     public func getItemSize(for frame: CGRect) -> CGSize {
@@ -39,6 +39,6 @@ extension ComicListViewModelProtocol {
     }
     
     public mutating func emptyComicList() {
-        self.comics = []
+        self.comics.value = []
     }
 }

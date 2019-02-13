@@ -12,7 +12,7 @@ import Result
 
 class HomeViewModel: NSObject, ComicListViewModelProtocol {
     
-    internal var comics: [Comic] = []
+    internal var comics: MutableProperty<[Comic]> = MutableProperty([])
     
     internal var isGettingComics: Bool = false
     
@@ -25,13 +25,13 @@ class HomeViewModel: NSObject, ComicListViewModelProtocol {
      */
     public func loadComics(reloadList: Bool, searchText: String?) -> SignalProducer<[Comic], NetworkingError> {
         self.isGettingComics = true
-        let offset = reloadList ? 0 : self.comics.count
+        let offset = reloadList ? 0 : self.comics.value.count
         if reloadList {
-            self.comics = []
+            self.comics.value = []
         }
         
         return Networking().get(type: RequestResponse<Comic>.self, operation: .getComicList(offset: offset, searchText: searchText)).on { requestResponse in
-            self.comics.append(contentsOf: requestResponse.data?.results ?? [])
+            self.comics.value.append(contentsOf: requestResponse.data?.results ?? [])
             self.isGettingComics = false
         }.map { requestResponse in
             return requestResponse.data?.results ?? []

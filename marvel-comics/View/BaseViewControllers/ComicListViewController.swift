@@ -15,6 +15,7 @@ class ComicListViewController: UIViewController {
     
     // UI Elements
     let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: "backgroundHeroes"))
+    var emptyCollectionViewPlaceHolder: EmptyTableViewPlaceHolder = EmptyTableViewPlaceHolder(imageNamed: "WaitIcon", title: "No results", subtitle: "Please wait or reload.")
     let refreshControl: UIRefreshControl = UIRefreshControl(frame: .zero)
     let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     let searchBar = UISearchBar(frame: .zero)
@@ -42,6 +43,7 @@ class ComicListViewController: UIViewController {
         
         self.view.addSubview(self.searchBar)
         self.view.addSubview(self.backgroundImageView)
+        self.view.addSubview(self.emptyCollectionViewPlaceHolder)
         self.view.addSubview(self.collectionView)
         
         self.searchBar.snp.makeConstraints { make in
@@ -55,10 +57,17 @@ class ComicListViewController: UIViewController {
             make.left.right.bottom.equalToSuperview()
         }
         
+        self.emptyCollectionViewPlaceHolder.snp.makeConstraints { make in
+            make.top.equalTo(self.searchBar.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
         self.collectionView.snp.makeConstraints { make in
             make.top.equalTo(self.searchBar.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
+        
+        self.emptyCollectionViewPlaceHolder.isHidden = true
         
         self.searchBar.placeholder = "Start with title..."
         self.searchBar.barTintColor = UIColor(red: 237.0/255.0, green: 29.0/255.0, blue: 36.0/255.0, alpha: 1.0)
@@ -76,6 +85,10 @@ class ComicListViewController: UIViewController {
         self.collectionView.register(UINib.init(nibName: LoadMoreFooterReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "UICollectionElementKindSectionFooter", withReuseIdentifier: LoadMoreFooterReusableView.identifier)
         
         self.backgroundImageView.contentMode = .scaleAspectFill
+        
+        self.viewModel?.comics.producer.on(value: { [weak self] comics in
+            self?.emptyCollectionViewPlaceHolder.isHidden = comics.count != 0
+        }).start()
     }
 }
 
