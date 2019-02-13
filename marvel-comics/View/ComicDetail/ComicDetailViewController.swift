@@ -20,6 +20,7 @@ class ComicDetailViewController: UIViewController {
     let descriptionLabel: UILabel
     let favButton: UIButton
     let pageCountLabel: UILabel
+    let promoImagesCollectionView: PGCollectionView
 
     init(viewModel: ComicDetailViewModel) {
         self.viewModel = viewModel
@@ -29,8 +30,12 @@ class ComicDetailViewController: UIViewController {
         self.descriptionLabel = UILabel(frame: .zero)
         self.favButton = UIButton(frame: .zero)
         self.pageCountLabel = UILabel(frame: .zero)
+        self.promoImagesCollectionView = PGCollectionView(title: "", itemSize: CGSize(width: 150, height: 150), scrollOrientation: .horizontal(numOfRows: 1))
+        self.promoImagesCollectionView.collectionView.register(UINib.init(nibName: PromoComicImageCell.identifier, bundle: nil), forCellWithReuseIdentifier: PromoComicImageCell.identifier)
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.promoImagesCollectionView.collectionView.dataSource = self
         
         self.setupUI()
         self.loadComicInfo()
@@ -51,11 +56,12 @@ class ComicDetailViewController: UIViewController {
         self.descriptionLabel.text = self.viewModel.comic.descriptionText
         self.pageCountLabel.text = self.viewModel.comic.pageCount > 0 ? "(\(self.viewModel.comic.pageCount) pages)" : ""
         
-        if let thumbnailUrl = self.viewModel.comic.thumbnailUrl {
+        if let thumbnailUrl = self.viewModel.comic.thumbnail?.url {
             self.headerBackground.kf.setImage(with: thumbnailUrl)
         }
         
         self.reloadFavButton()
+        self.promoImagesCollectionView.reloadData()
     }
     
     private func reloadFavButton() {
@@ -70,6 +76,7 @@ class ComicDetailViewController: UIViewController {
         self.view.addSubview(self.descriptionLabel)
         self.view.addSubview(self.favButton)
         self.view.addSubview(self.pageCountLabel)
+        self.view.addSubview(self.promoImagesCollectionView)
         
         self.headerBackground.snp.makeConstraints { make in
             make.top.equalTo(self.view.snp.topMargin).offset(16)
@@ -101,6 +108,11 @@ class ComicDetailViewController: UIViewController {
             make.right.equalToSuperview().offset(-16)
         }
         
+        self.promoImagesCollectionView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.descriptionLabel.snp.bottom)
+        }
+        
         self.headerBackground.layer.cornerRadius = 10
         self.headerBackground.clipsToBounds = true
         self.headerBackground.contentMode = .scaleAspectFill
@@ -119,5 +131,27 @@ class ComicDetailViewController: UIViewController {
         self.favButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             self?.favButtonPressed()
         }
+        
+        self.promoImagesCollectionView.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        self.promoImagesCollectionView.layer.borderWidth = 1.0
+    }
+}
+
+extension ComicDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.viewModel.getComicImagesCount()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PromoComicImageCell.identifier, for: indexPath) as? PromoComicImageCell,
+            let comicImage = self.viewModel.getComicImage(at: indexPath.row)
+        else {
+            return UICollectionViewCell()
+        }
+        
+        cell.loadImage(comicImage: comicImage)
+        
+        return cell
     }
 }

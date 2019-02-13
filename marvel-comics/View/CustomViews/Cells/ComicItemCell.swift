@@ -38,7 +38,7 @@ class ComicItemCell: UICollectionViewCell {
     private func reloadUI() {
         self.titleLabel.text = comic?.title
         
-        if let comicThumbnail = self.comic?.thumbnailUrl {
+        if let comicThumbnail = self.comic?.thumbnail?.url {
             self.activityIndicator.startAnimating()
             self.coverImageView.kf.setImage(with: comicThumbnail) { _ in
                 self.activityIndicator.stopAnimating()

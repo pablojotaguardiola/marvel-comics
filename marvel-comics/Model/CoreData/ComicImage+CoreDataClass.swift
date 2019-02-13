@@ -18,6 +18,15 @@ public class ComicImage: NSManagedObject, Decodable {
         case extensionString = "extension"
     }
     
+    public var url: URL? {
+        guard
+            let imagePath = self.path,
+            let imageExtension = self.extensionString
+            else { return nil }
+        
+        return URL(string: "\(imagePath).\(imageExtension)")
+    }
+    
     convenience init(from other: ComicImage) {
         self.init(entity: NSEntityDescription.entity(forEntityName: "ComicImage", in: CoreData.context)!, insertInto: nil)
         

@@ -19,15 +19,7 @@ public class Comic: NSManagedObject, Decodable, CoreDataObject {
         case thumbnail
         case descriptionText = "description"
         case pageCount
-    }
-    
-    public var thumbnailUrl: URL? {
-        guard
-            let thumbnailPath = thumbnail?.path,
-            let thumbnailExtension = thumbnail?.extensionString
-        else { return nil }
-        
-        return URL(string: "\(thumbnailPath).\(thumbnailExtension)")
+        case images
     }
     
     convenience init(from other: Comic) {
@@ -53,6 +45,9 @@ public class Comic: NSManagedObject, Decodable, CoreDataObject {
         self.thumbnail = try container.decodeIfPresent(ComicImage.self, forKey: .thumbnail)
         self.descriptionText = try container.decodeIfPresent(String.self, forKey: .descriptionText)
         self.pageCount = try container.decode(Int16.self, forKey: .pageCount)
+        if let imagesArray = try container.decodeIfPresent([ComicImage].self, forKey: .images) {
+            self.images = NSSet(array: imagesArray)
+        }
     }
     
     @discardableResult
@@ -62,6 +57,8 @@ public class Comic: NSManagedObject, Decodable, CoreDataObject {
         }
         
         self.thumbnail?.insert()
+        
+        self.images?.forEach { ($0 as? ComicImage)?.insert() }
         
         self.insert()
         return true

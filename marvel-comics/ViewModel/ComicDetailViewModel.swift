@@ -34,4 +34,20 @@ class ComicDetailViewModel: NSObject {
         
         CoreData.save()
     }
+    
+    public func getComicImagesCount() -> Int {
+        return self.comic.images?.count ?? 0
+    }
+    
+    public func getComicImage(at index: Int) -> ComicImage? {
+        guard
+            let comicImagesSet = self.comic.images,
+            let comicImages = Array(comicImagesSet) as? [ComicImage],
+            index < comicImages.count
+        else {
+            return nil
+        }
+        
+        return comicImages[index]
+    }
 }

@@ -2,7 +2,7 @@
 //  ComicImage+CoreDataProperties.swift
 //  marvel-comics
 //
-//  Created by Pablo Guardiola on 10/02/2019.
+//  Created by Pablo Guardiola on 14/02/2019.
 //  Copyright © 2019 Pablo Guardiola. All rights reserved.
 //
 //
@@ -17,8 +17,8 @@ extension ComicImage {
         return NSFetchRequest<ComicImage>(entityName: "ComicImage")
     }
 
-    @NSManaged public var path: String?
     @NSManaged public var extensionString: String?
+    @NSManaged public var path: String?
     @NSManaged public var comic: Comic?
 
 }

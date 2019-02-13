@@ -10,6 +10,8 @@
 		3AE2FBBC43E7461747D9CE65 /* Pods_marvel_comicsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223470BF102AFEB5F8602B6D /* Pods_marvel_comicsUITests.framework */; };
 		812B55552214CFDB00D14851 /* EmptyTableViewPlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B55542214CFDB00D14851 /* EmptyTableViewPlaceHolder.swift */; };
 		812B55572214CFE100D14851 /* PGCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B55562214CFE100D14851 /* PGCollectionView.swift */; };
+		812B555A2214E16D00D14851 /* PromoComicImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B55582214E16D00D14851 /* PromoComicImageCell.swift */; };
+		812B555B2214E16D00D14851 /* PromoComicImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 812B55592214E16D00D14851 /* PromoComicImageCell.xib */; };
 		8149B0C4220DF2AF00C931DE /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0C3220DF2AF00C931DE /* ComicDetailViewController.swift */; };
 		8149B0C6220DF2D000C931DE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0C5220DF2D000C931DE /* HomeViewModel.swift */; };
 		8149B0C8220DF2EF00C931DE /* ComicDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B0C7220DF2EF00C931DE /* ComicDetailViewModel.swift */; };
@@ -71,6 +73,8 @@
 		611CA27EBA4CB6ED3CF0B628 /* Pods-marvel-comics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-comics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marvel-comics/Pods-marvel-comics.debug.xcconfig"; sourceTree = "<group>"; };
 		812B55542214CFDB00D14851 /* EmptyTableViewPlaceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewPlaceHolder.swift; sourceTree = "<group>"; };
 		812B55562214CFE100D14851 /* PGCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGCollectionView.swift; sourceTree = "<group>"; };
+		812B55582214E16D00D14851 /* PromoComicImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoComicImageCell.swift; sourceTree = "<group>"; };
+		812B55592214E16D00D14851 /* PromoComicImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoComicImageCell.xib; sourceTree = "<group>"; };
 		8149B0C3220DF2AF00C931DE /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		8149B0C5220DF2D000C931DE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8149B0C7220DF2EF00C931DE /* ComicDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewModel.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			children = (
 				8149B0DD220E0C3100C931DE /* ComicItemCell.swift */,
 				8149B0DE220E0C3100C931DE /* ComicItemCell.xib */,
+				812B55582214E16D00D14851 /* PromoComicImageCell.swift */,
+				812B55592214E16D00D14851 /* PromoComicImageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8149B0F4220F613700C931DE /* LoadMoreFooterReusableView.xib in Resources */,
+				812B555B2214E16D00D14851 /* PromoComicImageCell.xib in Resources */,
 				8149B0E0220E0C3100C931DE /* ComicItemCell.xib in Resources */,
 				817A8045220DEFDF009E69D3 /* LaunchScreen.storyboard in Resources */,
 				817A8042220DEFDF009E69D3 /* Assets.xcassets in Resources */,
@@ -636,6 +643,7 @@
 				8149B0E7220E3E9F00C931DE /* CoreDataObject.swift in Sources */,
 				812B55572214CFE100D14851 /* PGCollectionView.swift in Sources */,
 				8149B0DA220DFDE100C931DE /* CoreData+extensions.swift in Sources */,
+				812B555A2214E16D00D14851 /* PromoComicImageCell.swift in Sources */,
 				8149B0CC220DF53D00C931DE /* Networking.swift in Sources */,
 				8149B0F3220F613700C931DE /* LoadMoreFooterReusableView.swift in Sources */,
 				8149B0C4220DF2AF00C931DE /* ComicDetailViewController.swift in Sources */,
