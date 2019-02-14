@@ -87,7 +87,9 @@ class ComicListViewController: UIViewController {
         self.backgroundImageView.contentMode = .scaleAspectFill
         
         self.viewModel?.comics.producer.on(value: { [weak self] comics in
-            self?.emptyCollectionViewPlaceHolder.isHidden = comics.count != 0
+            DispatchQueue.main.async {
+                self?.emptyCollectionViewPlaceHolder.isHidden = comics.count != 0
+            }
         }).start()
     }
 }

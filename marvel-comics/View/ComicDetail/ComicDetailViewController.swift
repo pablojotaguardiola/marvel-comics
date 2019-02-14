@@ -30,7 +30,7 @@ class ComicDetailViewController: UIViewController {
         self.descriptionLabel = UILabel(frame: .zero)
         self.favButton = UIButton(frame: .zero)
         self.pageCountLabel = UILabel(frame: .zero)
-        self.promoImagesCollectionView = PGCollectionView(title: "", itemSize: CGSize(width: 150, height: 150), scrollOrientation: .horizontal(numOfRows: 1))
+        self.promoImagesCollectionView = PGCollectionView(title: "Promo images:", itemSize: CGSize(width: 150, height: 150), scrollOrientation: .horizontal(numOfRows: 1))
         self.promoImagesCollectionView.collectionView.register(UINib.init(nibName: PromoComicImageCell.identifier, bundle: nil), forCellWithReuseIdentifier: PromoComicImageCell.identifier)
         
         super.init(nibName: nil, bundle: nil)
@@ -110,7 +110,7 @@ class ComicDetailViewController: UIViewController {
         
         self.promoImagesCollectionView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(self.descriptionLabel.snp.bottom)
+            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(16)
         }
         
         self.headerBackground.layer.cornerRadius = 10

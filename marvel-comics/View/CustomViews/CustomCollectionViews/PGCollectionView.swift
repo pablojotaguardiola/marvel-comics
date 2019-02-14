@@ -70,7 +70,7 @@ class PGCollectionView: UIView {
         }
         
         self.collectionView.snp.makeConstraints { make in
-            make.top.equalTo(self.titleLabel.snp.bottom)
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(16)
             make.left.right.bottom.equalToSuperview()
             switch self.scrollOrientation {
             case .vertical(let numOfColumns):

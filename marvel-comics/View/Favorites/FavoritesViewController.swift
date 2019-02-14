@@ -29,9 +29,10 @@ class FavoritesViewController: ComicListViewController {
     }
     
     @objc private func loadComics() {
-        self.viewModel?.loadComics(reloadList: false, searchText: self.searchBar.text).startWithResult { _ in
+        self.viewModel?.loadComics(reloadList: false, searchText: self.searchBar.text).startWithResult { result in
             self.collectionView.reloadData()
             self.collectionView.refreshControl?.endRefreshing()
+            self.emptyCollectionViewPlaceHolder.isHidden = result.value?.count ?? 0 != 0
         }
     }
 }
